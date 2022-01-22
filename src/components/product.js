@@ -2,7 +2,7 @@ import React from 'react';
 import Rating from './rating';
 
 const Product = ({ product }) => (
-  <div key={product._id} className="card">
+  <div className="card">
     <a href={`product/${product._id}`}>
       <img className="medium" src={product.image} alt={product.name} />
     </a>

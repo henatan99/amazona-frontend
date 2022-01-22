@@ -4,7 +4,8 @@ import Product from './components/product';
 
 function App() {
   return (
-    <div className="grid-container">
+    <BrowserRouter>
+  <div className="grid-container">
       <header className="row">
         <div>
           <a href="/" className="brand">amazona</a>
@@ -18,7 +19,7 @@ function App() {
         <div className="row center">
           {
             data.products.map((product) => (
-              <Product product={product} />
+              <Product key={product._id} product={product} />
             ))
           }
         </div>
@@ -27,6 +28,8 @@ function App() {
         All rights reserved
       </footer>
     </div>
+    </BrowserRouter>
+    
   );
 }
 
