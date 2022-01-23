@@ -62,7 +62,14 @@ a {
 a:hover {
   color: #ff8000;
 }
-
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+li {
+  margin-top: 0;
+}
 /* Header */
 header a {
   color: #fff;
@@ -86,6 +93,15 @@ a.brand {
   justify-content: center;
 }
 
+.row.top {
+  align-items: flex-start;
+}
+.col-{
+  flex: 1 1 25rem;  
+} 
+.col-2{
+  flex: 2 1 50rem;
+}
 /* image */
 img {
   border-radius: 0.5rem;
@@ -124,4 +140,9 @@ img.medium {
 
 .rating span:last-child{
   color: #404040;
+}
+
+/* */
+.success{
+  color: red;
 }
