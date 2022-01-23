@@ -10,7 +10,7 @@ const data = {
       rating: 4.5,
       numReviews: 10,
       description: 'high quality product',
-      countInStack: 10,
+      countInStock: 10,
     },
     {
       _id: '2',
@@ -22,7 +22,7 @@ const data = {
       rating: 4.0,
       numReviews: 10,
       description: 'high quality product',
-      countInStack: 17,
+      countInStock: 17,
     },
     {
       _id: '3',
@@ -34,7 +34,7 @@ const data = {
       rating: 4.5,
       numReviews: 14,
       description: 'high quality product',
-      countInStack: 0,
+      countInStock: 0,
     },
     {
       _id: '4',
@@ -46,7 +46,7 @@ const data = {
       rating: 1.5,
       numReviews: 10,
       description: 'high quality product',
-      countInStack: 5,
+      countInStock: 5,
     },
     {
       _id: '5',
@@ -58,7 +58,7 @@ const data = {
       rating: 3.5,
       numReviews: 10,
       description: 'high quality product',
-      countInStack: 7,
+      countInStock: 7,
     },
     {
       _id: '6',
@@ -70,7 +70,7 @@ const data = {
       rating: 2,
       numReviews: 10,
       description: 'high quality product',
-      countInStack: 0,
+      countInStock: 0,
     },
   ],
 };
