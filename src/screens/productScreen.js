@@ -4,8 +4,8 @@ import Rating from '../components/rating';
 import data from '../data';
 
 const ProductScreen = (props) => {
-  const { match } = {...props}
-  const product = data.products.find((x) => x._id === match.params.id);
+  const { match } = { ...props };
+  const product = data.products.find((x) => x.id === match.params.id);
   if (!product) {
     return <div>Product Not Found</div>;
   }
@@ -44,7 +44,8 @@ const ProductScreen = (props) => {
                 <div>
                   <div>Price</div>
                   <div className="price">
-                    ${product.price}
+                    $
+                    {product.price}
                   </div>
                 </div>
               </li>
@@ -53,13 +54,13 @@ const ProductScreen = (props) => {
                   <div>Status</div>
                   <div>
                     {product.countInStock > 0
-                    ? (<span className="success">In Stock</span>)
-                    : (<span className="danger">Unavailable</span>)}
+                      ? (<span className="success">In Stock</span>)
+                      : (<span className="danger">Unavailable</span>)}
                   </div>
                 </div>
               </li>
               <li>
-                <button className="primary block">Add to Cart</button>
+                <button className="primary block" type="button">Add to Cart</button>
               </li>
             </ul>
           </div>

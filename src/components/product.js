@@ -1,19 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Rating from './rating';
 
-const Product = ({ product }) => (
-  <div className="card">
-    <a href={`product/${product._id}`}>
-      <img className="medium" src={product.image} alt={product.name} />
-    </a>
-    <div className="card-body">
-      <a href={`product/${product._id}`}>
-        <h2>{product.name}</h2>
+const Product = ({ product }) => {
+  const {
+    id, name, image, numReviews, price, rating,
+  } = product;
+  return (
+    <div className="card">
+      <a href={`product/${id}`}>
+        <img className="medium" src={image} alt={name} />
       </a>
-      <Rating rating={product.rating} numReviews={product.numReviews} />
-      <div className="price">{product.price}</div>
+      <div className="card-body">
+        <a href={`product/${id}`}>
+          <h2>{name}</h2>
+        </a>
+        <Rating rating={rating} numReviews={numReviews} />
+        <div className="price">{price}</div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
+Product.defaultProps = {
+  product: {
+    id: null,
+    name: null,
+    image: null,
+    numReviews: 0,
+    price: null,
+    rating: null,
+  },
+};
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    image: PropTypes.string,
+    numReviews: PropTypes.number,
+    price: PropTypes.number,
+    rating: PropTypes.number,
+  }),
+};
 
 export default Product;
