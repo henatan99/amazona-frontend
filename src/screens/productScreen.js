@@ -1,17 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { detailsProducts } from '../actions/productActions';
 import LoadingBox from '../components/loadingBox';
 import MessageBox from '../components/messageBox';
 import Rating from '../components/rating';
 
 const ProductScreen = (props) => {
-  const productDetails = useSelector((state) => state.productDetails);
+  const dispatch = useDispatch();
+  const productId = props.match.params.id;
+  const productDetails = useSelector((state) => state.productDetailsReducer);
   const { loading, error, product } = productDetails;
 
-  if (!product) {
-    return <div>Product Not Found</div>;
-  }
+  useEffect(() => {
+    dispatch(detailsProducts(productId))
+  }, [dispatch, productId])
+
+  // if (!product) {
+  //   return <div>Product Not Found</div>;
+  // }
   return (
     <div>
       {loading ? (
