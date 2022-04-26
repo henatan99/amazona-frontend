@@ -7,13 +7,13 @@ import listProducts from '../actions/productActions';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const defaultProductList = { loading: true, error: null, products: null }
-  const productList = useSelector((state) => state.productList) || defaultProductList;
+  // const defaultProductList = { loading: true, error: null, products: null };
+  const productList = useSelector((state) => state.productListReducer);
   const { loading, error, products } = productList;
 
   useEffect(() => {
     dispatch(listProducts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
