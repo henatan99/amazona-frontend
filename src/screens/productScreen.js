@@ -1,16 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import LoadingBox from '../components/loadingBox';
+import MessageBox from '../components/messageBox';
 import Rating from '../components/rating';
-import data from '../data';
 
 const ProductScreen = (props) => {
-  const { match } = { ...props };
-  const product = data.products.find((x) => x.id === match.params.id);
+  const productDetails = useSelector((state) => state.productDetails);
+  const { loading, error, product } = productDetails;
+
   if (!product) {
     return <div>Product Not Found</div>;
   }
   return (
     <div>
+      {loading ? (
+        <LoadingBox />
+      ) : error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
+      ) : (
+        <div>
       <Link to="/">Back to result</Link>
       <div className="row top">
         <div className="row-2">
@@ -67,6 +76,9 @@ const ProductScreen = (props) => {
         </div>
       </div>
     </div>
+      )}
+    </div>
+    
   );
 };
 

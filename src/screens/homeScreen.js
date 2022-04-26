@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Product from '../components/product';
 import LoadingBox from '../components/loadingBox';
 import MessageBox from '../components/messageBox';
-import listProducts from '../actions/productActions';
+import { listProducts } from '../actions/productActions';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
