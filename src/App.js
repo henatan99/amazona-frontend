@@ -9,7 +9,7 @@ import CartScreen from './screens/CartScreen';
 function App() {
   const cart = useSelector((state) => state.cartReducer);
   const { cartItems } = cart;
-  console.log('cartItems', cartItems)
+  console.log('cartItems', cartItems);
   return (
     <BrowserRouter>
       <div className="grid-container">

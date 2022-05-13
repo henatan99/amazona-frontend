@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { detailsProducts } from '../actions/productActions';
@@ -8,7 +9,8 @@ import Rating from '../components/rating';
 
 const ProductScreen = (props) => {
   const dispatch = useDispatch();
-  const productId = props.match.params.id;
+  const { match, history } = props;
+  const productId = match.params.id;
   const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetailsReducer);
   const { loading, error, product } = productDetails;
@@ -18,7 +20,7 @@ const ProductScreen = (props) => {
   }, [dispatch, productId]);
 
   const addToCartHandler = () => {
-    props.history.push(`/cart/${productId}?qty=${qty}`);
+    history.push(`/cart/${productId}?qty=${qty}`);
   };
 
   // if (!product) {
@@ -89,7 +91,13 @@ const ProductScreen = (props) => {
                         <div>
                           <select value={qty} onChange={(e) => setQty(e.target.value)}>
                             {
-                              [...Array(product.countInStock).keys()].map((x) => <option key={x + 1} value={x + 1}>{x + 1}</option>)
+                              [...Array(product.countInStock).keys()].map(
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                ),
+                              )
                             }
                           </select>
                         </div>
@@ -113,3 +121,23 @@ const ProductScreen = (props) => {
 };
 
 export default ProductScreen;
+
+ProductScreen.defaultProps = {
+  match: {},
+  location: {},
+  history: null,
+};
+
+ProductScreen.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
+  location: PropTypes.shape({
+    search: PropTypes.string,
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
